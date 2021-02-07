@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "swiper",
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "custom": "../custom/custom"
+    }
+}

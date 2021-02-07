@@ -1,0 +1,135 @@
+<custom chineseName="滑块视图容器" engName="swiper"></custom>
+<view class="wrap">
+    <view class="card-area">
+        <swiper 
+            class="swiper"
+            indicator-dots="{{switchIndicateStatus}}"
+            indicator-color="rgba(0,0,0,0.30)"
+            indicator-active-color="#fff"
+            autoplay="{{switchAutoPlayStatus}}"
+            current="0"
+            current-item-id="0"
+            interval="{{autoPlayInterval}}"
+            duration="{{switchDuration}}"
+            circular="true"
+            vertical="{{switchVerticalStatus}}"
+            previous-margin="0px"
+            next-margin="0px"
+            display-multiple-items="1"
+            bind:change="swiperChange"
+            bind:animationfinish="animationfinish">
+            <swiper-item 
+                s-for="item in swiperList"
+                item-id="{{itemId}}"
+                class="{{item.className}}">
+                <view class="swiper-item">{{item.value}}</view>
+            </swiper-item>
+        </swiper>
+
+        <view class="item-scroll border-bottom">
+            <text class="switch-text-before">指示点</text>
+            <switch 
+                class="init-switch"
+                checked="{{switchIndicateStatus}}"
+                bind:change="switchIndicate">
+            </switch>
+        </view>
+
+        <view class="item-scroll border-bottom">
+            <text class="switch-text-before">自动切换</text>
+            <switch 
+                checked="{{switchAutoPlayStatus}}"
+                bind:change="switchAutoPlay"
+                class="init-switch">
+            </switch>     
+        </view>
+
+        <view class="item-scroll">
+            <text class="switch-text-before">纵向滑动</text>
+            <switch 
+                checked="{{switchVerticalStatus}}"
+                bind:change="switchVertical"
+                class="init-switch">
+            </switch>     
+        </view>
+    </view>
+    <view class="card-area">
+        <view class="top-description border-bottom">
+            <view>滑块切换时长</view>
+            <view>{{switchDuration}}ms</view>
+        </view>
+        <slider 
+            class="slider"
+            min="300"
+            max="1500"
+            value="{{switchDuration}}"
+            bind:change="changeSwitchDuration">
+        </slider>
+    </view>
+    <view class="card-area">
+        <view class="top-description border-bottom">
+            <view>自动切换时间间隔</view>
+            <view>{{autoPlayInterval}}ms</view>
+        </view>
+        <slider 
+            class="slider"
+            min="1000"
+            max="5000"
+            value="{{autoPlayInterval}}"
+            bind:change="changeAutoPlayInterval">
+        </slider>
+    </view>
+    <view class="mode-title mode-title-first">
+        <view class="mode-title-line-left"></view>
+        <view class="mode-title-text">业务示例</view>
+        <view class="mode-title-line-right"></view>
+    </view>
+    <view class="card-area">
+        <view class="top-description">自定义底部切换圆点</view>
+        <view class="swiper-wrap">
+            <swiper 
+                class="swiper-custom"
+                autoplay="auto"
+                interval="3000"
+                duration="500"
+                current="{{swiperCurrent}}"
+                bindchange="swiperChangeCustom">
+                <swiper-item s-for="{{slider}}">
+                    <image class="swiper-img" src="{{item.imageUrl}}"></image>
+                </swiper-item>
+            </swiper>
+            <view class="dots">
+                <view s-for="{{slider}}" class="dot {{index == swiperCurrent ? ' active' : ''}}"></view>
+            </view>
+        </view>
+    </view>
+    <view class="card-area">
+        <view class="top-description">模拟 tabs 组件功能</view>
+        <!-- 顶部导航 -->
+        <view class="swiper-tab">
+            <view class="tab-item {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swiperNav">全部</view>
+            <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swiperNav">服务通知</view>
+            <view class="tab-item {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swiperNav">系统通知</view>
+            <view class="tab-item {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swiperNav">评论</view>
+            <view class="tab-item {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swiperNav">其他</view>
+        </view>
+        <!-- 顶部导航对应的内容 -->
+        <swiper class="swiper-content" current="{{currentTab}}" duration="200">
+            <swiper-item>
+                <view>我是全部</view>
+            </swiper-item>
+            <swiper-item>
+                <view>我是服务通知</view>
+            </swiper-item>
+            <swiper-item>
+                <view>我是系统通知</view>
+            </swiper-item>
+            <swiper-item>
+                <view>我是评论</view>
+            </swiper-item>
+            <swiper-item>
+                <view>我是其他</view>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

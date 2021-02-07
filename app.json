@@ -1,0 +1,12 @@
+{
+    "pages": [
+        "index/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "backgroundColor": "#F5F5F5",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "智能小程序",
+        "navigationBarTextStyle": "black"
+    }
+}
